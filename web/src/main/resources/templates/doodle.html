@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>No one expects the spanish inquisition</title>
+    <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+    <script type="text/javascript" src="../static/js/generic.js"></script>
+</head>
+<body onload="setup()">
+<p th:text="'Connected to: ' + ${address} + ':3000'" />
+<a>No one expects the spanish inquisition</a>
+</body>
+
+<script th:inline="javascript">
+    function setup() {
+        var address = /*[[${address}]]*/ {};
+        initializePage(address)
+    }
+</script>
+</html>

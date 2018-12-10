@@ -1,17 +1,9 @@
-var socket;
+function initializePage(address) {
+    socket = io.connect('http://' + address + ':3000');
 
-function setup() {
-    createCanvas(400, 400);
+    createCanvas(1280, 1024);
     background(0);
-    socket = io.connect('http://192.168.0.105:3000');
     socket.on('mouse', draw);
-}
-
-function draw(data) {
-    console.log("Got: " + data.x + " " + data.y);
-    fill(0, 0, 255);
-    noStroke();
-    ellipse(data.x, data.y, 20, 20);
 }
 
 function mouseDragged() {
@@ -27,4 +19,10 @@ function sendmouse(xpos, ypos) {
         y: ypos
     };
     socket.emit('mouse', data);
+}
+
+function draw(data) {
+    fill(0, 0, 255);
+    noStroke();
+    ellipse(data.x, data.y, 20, 20);
 }
